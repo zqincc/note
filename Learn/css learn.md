@@ -4,7 +4,7 @@
 
 such as:
 
-css note: /**/
+CSS note: /**/
 
 # 1 css import mode
 
@@ -76,7 +76,7 @@ tips: this mode will cooperate JavaScript.
 
 ​	Select all have the tag.
 
-fomat: tag name {CSS atrribute name: atrribute value;}
+fomat: tag name {CSS attribute name: attribute value;}
 
 useful: by tag name, find all tag of this class, the set style.
 
@@ -100,7 +100,7 @@ useful: by tag name, find all tag of this class, the set style.
 
 ​	who use selcet who.
 
-format: .class name {CSS atrribute name: atrribute value;}
+format: .class name {CSS attribute name: attribute value;}
 
 useful: by class name, find all included class name of tag on the pages.
 
@@ -123,7 +123,7 @@ useful: by class name, find all included class name of tag on the pages.
 
 ## 2.3 id selector（id 选择器）
 
-format: #id atrribute value {class atrribute: atrribute vlaue;}
+format: #id atrribute value {class attribute: attribute vlaue;}
 
 tigs: id select in order to cooperate in JavaScript in the future.
 
@@ -146,7 +146,7 @@ tigs: id select in order to cooperate in JavaScript in the future.
 
 ## 2.4 wildcard select（通配符选择器）
 
-format: *{CSS atrribute name: atrribute value;}
+format: *{CSS attribute name: attribute value;}
 
 ```
 <html>
@@ -167,15 +167,15 @@ format: *{CSS atrribute name: atrribute value;}
 </html>
 ```
 
-# 3 font and text styles
+# 3 font style
 
-font style:
+## 3.1 font style:
 
 <table border="2">
     <thead>
         <tr>
             <th>style</th>
-            <th>atrribute name</th>
+            <th>attribute name</th>
         </tr>
     </thead>
     <tbody>
@@ -202,15 +202,15 @@ font style:
     </tbody>
 </table>
 
-font-size:
+## 3.2 font-size:
 
-​	atrribute value: digit + px;
+​	attribute value: digit + px;
 
 ​	default value: 16px
 
-font-weight:
+## 3.3 font-weight:
 
-​	atrribute value:
+​	attribute value:
 
 ​		key word:
 
@@ -224,13 +224,13 @@ font-weight:
 | ---- | ---- |
 | 加粗 | 700  |
 
-font-style：	
+## 3.4 font-style：	
 
 | 正常 | normal(default value) |
 | ---- | --------------------- |
 | 倾斜 | italic                |
 
-font-family:
+## 3.5 font-family:
 
 | system  | default font-family |
 | ------- | ------------------- |
@@ -246,15 +246,76 @@ div {
 }
 ```
 
+## 3.6 Problem
+
+If a tag has the same style, CSS will come into effect in the end.
+
+Such as:
+
+```
+p {
+	color:red;
+	color:blue;
+}
+```
+
+This CSS will come into color blue.
+
+## 3.7 font related attributes must be conjoined 
+
+Format: font(compound attribute)
+
+Attribute value:
+
+​	style weight size family
+
+Omission requirement:
+
+​	You have to omit the first two. (This operation is equal to setting the default value.)
+
+​	In addition, you can use the alone font style under font. 
+
+```
+/*font: style weight size family;*/
+p {
+	/*A font have many value, space off.*/
+	font:italic 700 16px 宋体;
+}
+```
+
+## 3.8 extend
+
+Color value.
+
+Attribute name: color and background-color.
+
+Attribute value
+
+| Color expression's way | Express meaning                         | Attribute value                        |
+| ---------------------- | --------------------------------------- | -------------------------------------- |
+| key word               | 预定义的颜色名                          | red、green、blue...                    |
+| rgb expression         | 红蓝绿三原色，每项取值范围：0-255       | rgb(0,0,0)、rgb(255,255,255)           |
+| rgba expression        | 红蓝绿三原色+a表示透明度，取值范围是0-1 | rgba(0,0,0,0.5)、rgba(255,255,255,0.3) |
+| Hexadecimal notation   | #开头，将数字转换为十六进制             | #000000、#ff0000                       |
+
+Tag horizental centering way: margin: 0 auto
+
+```
+div {
+	margin: auto;
+}
+<div></div>
+```
 
 
-text style:
+
+# 4 text style
 
 <table border="2">
     <thead>
         <tr>
             <th>style</th>
-            <th>atrribute name</th>
+            <th>attribute name</th>
         </tr>
     </thead>
     <tbody>
@@ -265,3 +326,93 @@ text style:
     </tbody>
 </table>
 
+## 4.1 text-indent
+
+Text indent attribute name: text-indent
+
+attribute value:
+
+​	digit + px
+
+​	dight + em (Recommend, 1em = tag's font-size now)
+
+```
+p {
+	text-indent: 50px;
+	/*Usually indent 2 font*/
+	/*em: a font-size*/
+	text-indent: 2em;
+}
+```
+
+## 4.2 text-align
+
+| Attribute value | Effect      |
+| --------------- | ----------- |
+| left            | left align  |
+| center          | center      |
+| right           | right align |
+
+Tigs: If you need to make the text horizontal centering, set text tag(The parent element of text).
+
+```
+p {
+	text-align: center;
+}
+```
+
+Horizontal centering ways(text-align: center)
+
+Which element will Horizental centering?
+
+Text, span tag, a tag, input tag and img tag.
+
+Pay attention:
+
+If you need to set above element horizental centering, you need to set the parent element (text-align: center). 
+
+```
+body {
+	text-align: center;
+}
+<body>
+	<img sre="./" alt="">
+</body>
+```
+
+## 4.3 text-decoration
+
+| Attribute value | Effct              |
+| --------------- | ------------------ |
+| underline       | 下划线（常用）     |
+| line-through    | 删除线（不常用）   |
+| overline        | 上划线（几乎不用） |
+| none            | 无修饰线（常用）   |
+
+## 4.4 line-height
+
+Function: control a line up and down distance.
+
+Attribute name: line-height
+
+Attribute vaule:
+
+​	digit + px
+
+​	multiple (The mutiple of tag's font-size now)
+
+Applycation: 
+
+First, let alone line text vertical centering. line-height: height of font parent' element
+
+Second, Web precise layout will set line-height.(It can cancel up and down distance.)
+
+If set the height and font related attributes must be conjoined, note covers problem.
+
+```
+font: style wight size/line-height famuly.
+```
+
+# 5 Chrome Debugging tool 
+
+summary: 2023/1/14 learning note.
